@@ -14,10 +14,12 @@
         android:text="@string/SignIn"
         android:textColor="@color/white"
         android:textSize="13pt"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserID" />
+        app:layout_constraintTop_toBottomOf="@+id/UserID"
+        app:layout_constraintVertical_bias="0.027" />
 
     <TextView
         android:id="@+id/WelcomeText"
@@ -40,10 +42,12 @@
         android:layout_marginTop="28dp"
         android:textColor="@color/secondary_text"
         android:textSize="12pt"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WelcomeText"
+        app:layout_constraintVertical_bias="0.057"
         tools:text="@string/LoginSubtitle" />
 
     <EditText
@@ -60,9 +64,11 @@
         android:textColor="@color/primary_text"
         android:textColorHint="#78909C"
         android:textSize="13pt"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginSubtitle" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginSubtitle"
+        app:layout_constraintVertical_bias="0.047" />
 
     <TextView
         android:id="@+id/createAccount"
