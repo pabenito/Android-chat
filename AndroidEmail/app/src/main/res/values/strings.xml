@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Android-Email</string>
+    <string name="Welcome">Welcome back!</string>
+    <string name="LoginSubtitle">Please, login to continue</string>
+    <string name="IDInput">User Id</string>
+    <string name="SignIn">Sign In</string>
+    <string name="CreateAccount">Create New Account</string>
+    <string name="UserName">User Name</string>
+    <string name="SignUp">Sign Up</string>
 </resources>
