@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android-Email</string>
+    <string name="Welcome">¡Bienvenido de nuevo!</string>
+    <string name="LoginSubtitle">Por favor, inicia sesion para continuar</string>
+    <string name="IDInput">Id de usuario</string>
+    <string name="SignIn">Iniciar sesión</string>
+    <string name="CreateAccount">Crear Cuenta</string>
+    <string name="UserName">Nombre de Usuario</string>
+    <string name="SignUp">Registrarse</string>
+</resources>
