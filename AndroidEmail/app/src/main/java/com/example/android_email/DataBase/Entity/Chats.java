@@ -15,15 +15,12 @@ public class Chats {
     public String id;
 
     @NonNull
-    @ColumnInfo(name="sender")
-    public String sender;
+    @ColumnInfo(name="user1")
+    public String user1;
 
     @NonNull
-    @ColumnInfo(name="reciever")
-    public String reciever;
-
-    @NonNull
-    public String message;
+    @ColumnInfo(name="user2")
+    public String user2;
 
     @NonNull
     @ColumnInfo(name="Chat")
@@ -39,30 +36,21 @@ public class Chats {
     }
 
     @NonNull
-    public String getSender() {
-        return sender;
+    public String getUser1() {
+        return user1;
     }
 
-    public void setSender(@NonNull String sender) {
-        this.sender = sender;
-    }
-
-    @NonNull
-    public String getReciever() {
-        return reciever;
-    }
-
-    public void setReciever(@NonNull String reciever) {
-        this.reciever = reciever;
+    public void setUser1(@NonNull String user1) {
+        this.user1 = user1;
     }
 
     @NonNull
-    public String getMessage() {
-        return message;
+    public String getUser2() {
+        return user2;
     }
 
-    public void setMessage(@NonNull String message) {
-        this.message = message;
+    public void setUser2(@NonNull String user2) {
+        this.user2 = user2;
     }
 
     @NonNull

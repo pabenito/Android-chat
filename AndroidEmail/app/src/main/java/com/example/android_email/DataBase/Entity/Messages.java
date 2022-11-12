@@ -13,12 +13,16 @@ public class Messages {
     public String id;
 
     @NonNull
-    @ColumnInfo(name="user1")
-    public String user1;
+    @ColumnInfo(name="chatId")
+    public String chatId;
 
     @NonNull
-    @ColumnInfo(name="user2")
-    public String user2;
+    @ColumnInfo(name="sender")
+    public String sender;
+
+    @NonNull
+    @ColumnInfo(name="receiver")
+    public String receiver;
 
     public String getId() {
         return id;
@@ -29,20 +33,20 @@ public class Messages {
     }
 
     @NonNull
-    public String getUser1() {
-        return user1;
+    public String getSender() {
+        return sender;
     }
 
-    public void setUser1(@NonNull String user1) {
-        this.user1 = user1;
+    public void setSender(@NonNull String sender) {
+        this.sender = sender;
     }
 
     @NonNull
-    public String getUser2() {
-        return user2;
+    public String getReceiver() {
+        return receiver;
     }
 
-    public void setUser2(@NonNull String user2) {
-        this.user2 = user2;
+    public void setReceiver(@NonNull String receiver) {
+        this.receiver = receiver;
     }
 }
