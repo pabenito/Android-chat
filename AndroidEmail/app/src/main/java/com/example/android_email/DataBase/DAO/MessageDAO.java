@@ -1,5 +1,6 @@
 package com.example.android_email.DataBase.DAO;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -10,6 +11,7 @@ import com.example.android_email.DataBase.Entity.Users;
 
 import java.util.List;
 
+@Dao
 public interface MessageDAO {
 
     @Query("SELECT * FROM Messages")
