@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Users {
     @PrimaryKey
+    @NonNull
     public String id;
 
     @NonNull

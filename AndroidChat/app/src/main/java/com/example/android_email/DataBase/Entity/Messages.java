@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey;
 public class Messages {
 
     @PrimaryKey
+    @NonNull
     public String id;
 
     @NonNull

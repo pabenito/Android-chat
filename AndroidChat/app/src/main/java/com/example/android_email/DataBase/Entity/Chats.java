@@ -12,6 +12,7 @@ import java.util.List;
 public class Chats {
 
     @PrimaryKey
+    @NonNull
     public String id;
 
     @NonNull
