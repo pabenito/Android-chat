@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.Entity.User;
+import com.example.android_email.ExceptionHandler;
 import com.example.android_email.R;
 import com.example.android_email.databinding.ActivitySingUpBinding;
 
@@ -16,6 +17,7 @@ import java.util.Locale;
 public class SignUpActivity extends AppCompatActivity {
 
     private ActivitySingUpBinding binding;
+    private ExceptionHandler exceptionHandler;
     private AppDataBase db;
 
     @Override
@@ -23,6 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySingUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        exceptionHandler = new ExceptionHandler(this);
         db = AppDataBase.getInstance(getApplicationContext());
         setListeners();
     }
@@ -37,7 +40,9 @@ public class SignUpActivity extends AppCompatActivity {
         User user = db.userDao().get(username);
 
         if (user != null)
-            Toast.makeText(this, String.format(getResources().getString(R.string.err_UsernameTaken), username), Toast.LENGTH_LONG).show();
+            exceptionHandler.setMessage(String.format(getResources().getString(R.string.err_UsernameTaken), username));
+            throw new RuntimeException()
+            Toast.makeText(this, , Toast.LENGTH_LONG).show();
         User new_user = new User();
         new_user.username = username;
 
