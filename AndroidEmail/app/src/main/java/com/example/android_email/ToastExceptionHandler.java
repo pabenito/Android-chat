@@ -21,7 +21,7 @@ public class ToastExceptionHandler implements Thread.UncaughtExceptionHandler {
         Intent activityIntent = new Intent(activity, activity.getClass());
         PendingIntent activityPendingIntent = PendingIntent.getActivity(activity, 0, activityIntent, PendingIntent.FLAG_ONE_SHOT);
         AlarmManager alarmManager = (AlarmManager) activity.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, 5000, activityPendingIntent );
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, 0, activityPendingIntent );
         System.exit(2);
         thread.getDefaultUncaughtExceptionHandler().uncaughtException(thread, throwable);
     }
