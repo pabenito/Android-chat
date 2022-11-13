@@ -12,20 +12,9 @@ import java.util.List;
 
 @Dao
 public interface MessageDAO {
-
-    @Query("SELECT * FROM Message")
-    List<Message> getAll();
-
-    @Query("SELECT * FROM Message WHERE id IN (:messageId)")
-    List<Message> loadAllByIds(String messageId);
-
+    @Query("SELECT * FROM Message WHERE chatId =  :chatId")
+    public List<Message> getChatMessages(int chatId);
 
     @Insert
-    void insert(Message messages);
-
-    @Delete
-    void delete(Message messages);
-
-    @Update
-    void update(Message messages);
+    public void insert(Message messages);
 }

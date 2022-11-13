@@ -7,26 +7,19 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.android_email.DataBase.Entity.Chat;
+import com.example.android_email.DataBase.Entity.User;
 
 
 import java.util.List;
 
 @Dao
 public interface ChatDAO {
+    @Query("SELECT * FROM Chat WHERE user1 LIKE :username OR user2 LIKE :username")
+    public List<Chat> getChatsUser(String username);
 
-    @Query("SELECT * FROM Chat")
-    List<Chat> getAll();
-
-    @Query("SELECT * FROM Chat WHERE id IN (:chatId)")
-    List<Chat> loadAllByIds(String chatId);
-
+    @Query("SELECT * FROM Chat WHERE id = :chatId")
+    public Chat get(int chatId);
 
     @Insert
-    void insert(Chat chat);
-
-    @Delete
-    void delete(Chat chat);
-
-    @Update
-    void update(Chat chat);
+    public void insert(Chat chat);
 }

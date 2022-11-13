@@ -8,16 +8,13 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Chat {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
-    public String id;
+    public int id;
 
     @NonNull
-    public String user1;
+    public int user1;
 
     @NonNull
-    public String user2;
-
-    @NonNull
-    public String chat;
+    public int user2;
 }

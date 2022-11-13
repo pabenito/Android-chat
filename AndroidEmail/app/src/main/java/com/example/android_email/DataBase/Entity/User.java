@@ -8,8 +8,8 @@ import androidx.room.PrimaryKey;
 public class User {
     @PrimaryKey
     @NonNull
-    public String id;
+    public String username;
 
     @NonNull
-    public String username;
+    public String name;
 }

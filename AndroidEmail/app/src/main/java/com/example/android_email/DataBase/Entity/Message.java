@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Message {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
-    public String id;
+    public int id;
 
     @NonNull
-    public String chatId;
+    public int chatId;
 
     @NonNull
     public String sender;
