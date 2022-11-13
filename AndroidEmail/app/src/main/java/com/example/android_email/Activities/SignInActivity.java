@@ -24,7 +24,6 @@ public class SignInActivity extends AppCompatActivity {
 
     private void setListeners() {
         binding.tvCreateAccount.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), SignUpActivity.class)));
-
     }
 
 }

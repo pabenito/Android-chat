@@ -6,4 +6,7 @@
     <string name="SignIn">Sign In</string>
     <string name="CreateAccount">Create New Account</string>
     <string name="SignUp">Sign Up</string>
+    <string name="err_UsernameTaken">%s is already taken</string>
+    <string name="msg_SingUpSuccessfully">You have singed up as %s</string>
+    <string name="err_Unexpected">Unexpected error: %s</string>
 </resources>

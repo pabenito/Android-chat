@@ -7,4 +7,7 @@
     <string name="SignIn">Iniciar sesión</string>
     <string name="CreateAccount">Crear Cuenta</string>
     <string name="SignUp">Registrarse</string>
+    <string name="err_UsernameTaken">%s ya está en uso</string>
+    <string name="msg_SingUpSuccessfully">Te has registrado como %s</string>
+    <string name="err_Unexpected">Error inesperado: %s</string>
 </resources>
