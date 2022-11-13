@@ -40,13 +40,12 @@ public class SignUpActivity extends AppCompatActivity {
         User user = db.userDao().get(username);
 
         if (user != null)
-            exceptionHandler.setMessage(String.format(getResources().getString(R.string.err_UsernameTaken), username));
-            throw new RuntimeException()
-            Toast.makeText(this, , Toast.LENGTH_LONG).show();
+            throw new RuntimeException(String.format(getResources().getString(R.string.err_UsernameTaken), username));
+
         User new_user = new User();
         new_user.username = username;
-
         db.userDao().insert(new_user);
+
         Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingUpSuccessfully), username), Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, SignInActivity.class));
     }

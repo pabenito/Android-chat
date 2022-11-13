@@ -11,7 +11,6 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
 
     public ExceptionHandler(Context context){
         this.context = context;
-        this.defaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
     }
 
     @Override
@@ -21,8 +20,6 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
             Thread.sleep(3000); // Let the Toast display before app will get shutdown
         } catch (InterruptedException e) {
             System.exit(2);
-        } finally {
-            this.defaultUncaughtExceptionHandler.uncaughtException(thread, throwable);
         }
     }
 }
