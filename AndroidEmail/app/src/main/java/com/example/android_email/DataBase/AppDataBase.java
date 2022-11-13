@@ -24,7 +24,9 @@ public abstract class AppDataBase extends RoomDatabase {
 
     public static AppDataBase getInstance(Context context) {
         if(INSTANCE == null)
-            INSTANCE = Room.databaseBuilder(context,AppDataBase.class,"android-chat").build();
+            INSTANCE = Room.databaseBuilder(context,AppDataBase.class,"android-chat")
+                    .allowMainThreadQueries()
+                    .build();
         return INSTANCE;
     }
 }

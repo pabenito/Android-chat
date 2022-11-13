@@ -8,5 +8,7 @@
     <string name="SignUp">Sign Up</string>
     <string name="err_UsernameTaken">%s is already taken</string>
     <string name="msg_SingUpSuccessfully">You have singed up as %s</string>
+    <string name="msg_SingInSuccessfully">You have singed in as %s</string>
     <string name="err_Unexpected">Unexpected error: %s</string>
+    <string name="err_UsernameNotFound">%s is not a user yet</string>
 </resources>

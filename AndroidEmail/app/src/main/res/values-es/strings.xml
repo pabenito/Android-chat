@@ -9,5 +9,7 @@
     <string name="SignUp">Registrarse</string>
     <string name="err_UsernameTaken">%s ya está en uso</string>
     <string name="msg_SingUpSuccessfully">Te has registrado como %s</string>
+    <string name="msg_SingInSuccessfully">Has iniciado sesión como %s</string>
     <string name="err_Unexpected">Error inesperado: %s</string>
+    <string name="err_UsernameNotFound">%s no es un usuario todavía</string>
 </resources>

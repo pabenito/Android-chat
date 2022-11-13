@@ -35,16 +35,17 @@ public class SignUpActivity extends AppCompatActivity {
     private void singUp() {
         String username = binding.etUsername.getText().toString().trim().toLowerCase();
         User user = db.userDao().get(username);
+
         if (user != null)
-            Toast.makeText(this, String.format(getResources().getString(R.string.err_UsernameTaken), username), Toast.LENGTH_LONG);
+            Toast.makeText(this, String.format(getResources().getString(R.string.err_UsernameTaken), username), Toast.LENGTH_LONG).show();
         User new_user = new User();
         new_user.username = username;
-        try {
-            db.userDao().insert(new_user);
-        } catch (Exception e){
-            Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingUpSuccessfully), e), Toast.LENGTH_LONG);
-        }
-        Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingUpSuccessfully), username), Toast.LENGTH_LONG);
+
+        db.userDao().insert(new_user);
+        Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingUpSuccessfully), username), Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, SignInActivity.class));
     }
+
+    @Override
+    handle
 }
