@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Users {
+public class User {
     @PrimaryKey
     @NonNull
     public String id;

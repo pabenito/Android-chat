@@ -6,27 +6,26 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.android_email.DataBase.Entity.Messages;
-import com.example.android_email.DataBase.Entity.Users;
+import com.example.android_email.DataBase.Entity.Message;
 
 import java.util.List;
 
 @Dao
 public interface MessageDAO {
 
-    @Query("SELECT * FROM Messages")
-    List<Messages> getAll();
+    @Query("SELECT * FROM Message")
+    List<Message> getAll();
 
-    @Query("SELECT * FROM Messages WHERE id IN (:messageId)")
-    List<Messages> loadAllByIds(String messageId);
+    @Query("SELECT * FROM Message WHERE id IN (:messageId)")
+    List<Message> loadAllByIds(String messageId);
 
 
     @Insert
-    void insert(Messages messages);
+    void insert(Message messages);
 
     @Delete
-    void delete(Messages messages);
+    void delete(Message messages);
 
     @Update
-    void update(Messages messages);
+    void update(Message messages);
 }

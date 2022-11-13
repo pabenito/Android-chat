@@ -6,28 +6,28 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.android_email.DataBase.Entity.Users;
+import com.example.android_email.DataBase.Entity.User;
 
 import java.util.List;
 
 @Dao
 public interface UserDAO {
 
-    @Query("SELECT * FROM Users")
-    List<Users> getAll();
+    @Query("SELECT * FROM User")
+    List<User> getAll();
 
-    @Query("SELECT * FROM Users WHERE id IN (:userId)")
-    List<Users> loadAllByIds(String userId);
+    @Query("SELECT * FROM User WHERE id IN (:userId)")
+    List<User> loadAllByIds(String userId);
 
-    @Query("SELECT * FROM Users WHERE username LIKE :username LIMIT 1")
-    Users findByUsername(String username);
+    @Query("SELECT * FROM User WHERE username LIKE :username LIMIT 1")
+    User findByUsername(String username);
 
     @Insert
-    void insert(Users user);
+    void insert(User user);
 
     @Delete
-    void delete(Users user);
+    void delete(User user);
 
     @Update
-    void update(Users user);
+    void update(User user);
 }

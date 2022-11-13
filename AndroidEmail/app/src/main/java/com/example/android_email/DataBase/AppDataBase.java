@@ -9,11 +9,11 @@ import androidx.room.RoomDatabase;
 import com.example.android_email.DataBase.DAO.ChatDAO;
 import com.example.android_email.DataBase.DAO.MessageDAO;
 import com.example.android_email.DataBase.DAO.UserDAO;
-import com.example.android_email.DataBase.Entity.Chats;
-import com.example.android_email.DataBase.Entity.Messages;
-import com.example.android_email.DataBase.Entity.Users;
+import com.example.android_email.DataBase.Entity.Chat;
+import com.example.android_email.DataBase.Entity.Message;
+import com.example.android_email.DataBase.Entity.User;
 
-@Database(entities = {Users.class, Chats.class, Messages.class}, version = 1,exportSchema = false)
+@Database(entities = {User.class, Chat.class, Message.class}, version = 1,exportSchema = false)
 public abstract class AppDataBase extends RoomDatabase {
 
     private static volatile AppDataBase INSTANCE;

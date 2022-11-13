@@ -1,21 +1,23 @@
 package com.example.android_email.DataBase.Entity;
 
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+
 @Entity
-public class Messages {
+public class Chat {
     @PrimaryKey
     @NonNull
     public String id;
 
     @NonNull
-    public String chatId;
+    public String user1;
 
     @NonNull
-    public String sender;
+    public String user2;
 
     @NonNull
-    public String receiver;
+    public String chat;
 }
