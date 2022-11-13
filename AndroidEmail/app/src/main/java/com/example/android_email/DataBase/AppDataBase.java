@@ -13,7 +13,7 @@ import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.Message;
 import com.example.android_email.DataBase.Entity.User;
 
-@Database(entities = {User.class, Chat.class, Message.class}, version = 1,exportSchema = false)
+@Database(entities = {User.class, Chat.class, Message.class}, version = 1)
 public abstract class AppDataBase extends RoomDatabase {
 
     private static volatile AppDataBase INSTANCE;
@@ -23,13 +23,8 @@ public abstract class AppDataBase extends RoomDatabase {
     public abstract MessageDAO messageDAO();
 
     public static AppDataBase getInstance(Context context) {
-        if(INSTANCE == null){
-            INSTANCE = Room.databaseBuilder(context,AppDataBase.class,"checklist.db")
-                    .allowMainThreadQueries()
-                    .fallbackToDestructiveMigration()
-                    .build();
-        }
-
+        if(INSTANCE == null)
+            INSTANCE = Room.databaseBuilder(context,AppDataBase.class,"android-chat").build();
         return INSTANCE;
     }
 }
