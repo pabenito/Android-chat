@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.Entity.User;
 import com.example.android_email.R;
-import com.example.android_email.Exception.ToastExceptionHandler;
+import com.example.android_email.ToastExceptionHandler;
 import com.example.android_email.databinding.ActivitySingInBinding;
 
 public class SignInActivity extends AppCompatActivity {
@@ -46,7 +46,7 @@ public class SignInActivity extends AppCompatActivity {
             throw new RuntimeException(String.format(getResources().getString(R.string.err_UsernameNotFound), username));
 
         signedUser = user;
-        Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingInSuccessfully), username), Toast.LENGTH_LONG);
+        Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingInSuccessfully), username), Toast.LENGTH_LONG).show();
     }
 
 }

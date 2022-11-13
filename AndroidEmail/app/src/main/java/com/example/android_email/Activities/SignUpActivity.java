@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.Entity.User;
-import com.example.android_email.Exception.ToastExceptionHandler;
+import com.example.android_email.ToastExceptionHandler;
 import com.example.android_email.R;
 import com.example.android_email.databinding.ActivitySingUpBinding;
 
