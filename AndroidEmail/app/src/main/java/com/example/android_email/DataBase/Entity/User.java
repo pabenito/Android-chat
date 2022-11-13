@@ -9,7 +9,4 @@ public class User {
     @PrimaryKey
     @NonNull
     public String username;
-
-    @NonNull
-    public String name;
 }

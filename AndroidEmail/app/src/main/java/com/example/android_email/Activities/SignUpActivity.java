@@ -17,7 +17,6 @@ public class SignUpActivity extends AppCompatActivity {
         binding = ActivitySingUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setListeners();
-
     }
 
     private void setListeners(){

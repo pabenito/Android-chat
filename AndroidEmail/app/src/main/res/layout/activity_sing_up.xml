@@ -26,26 +26,11 @@
             android:textSize="@dimen/_18ssp" />
 
         <EditText
-            android:id="@+id/et_UserID"
+            android:id="@+id/et_UserUsername"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_40sdp"
-            android:hint="@string/IDInput"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:paddingStart="@dimen/_16sdp"
-            android:paddingEnd="@dimen/_16sdp"
-            android:textColor="@color/primary_text"
-            android:textColorHint="#78909C"
-            android:textSize="@dimen/_16ssp" />
-
-        <EditText
-            android:id="@+id/et_UserName"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_45sdp"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:hint="@string/UserName"
+            android:hint="@string/Username"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="text"

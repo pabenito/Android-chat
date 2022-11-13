@@ -12,7 +12,7 @@ import java.util.List;
 
 @Dao
 public interface UserDAO {
-    @Query("SELECT * FROM User WHERE name LIKE :username LIMIT 1")
+    @Query("SELECT * FROM User WHERE username LIKE :username LIMIT 1")
     public User get(String username);
 
     @Insert
