@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/NewAccount"
+            android:id="@+id/tv_NewAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_40sdp"
@@ -26,7 +26,7 @@
             android:textSize="@dimen/_18ssp" />
 
         <EditText
-            android:id="@+id/UserID"
+            android:id="@+id/et_UserID"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_40sdp"
@@ -41,7 +41,7 @@
             android:textSize="@dimen/_16ssp" />
 
         <EditText
-            android:id="@+id/UserName"
+            android:id="@+id/et_UserName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_40sdp"
@@ -56,7 +56,7 @@
             android:textSize="@dimen/_16ssp" />
 
         <Button
-            android:id="@+id/SingUpButton"
+            android:id="@+id/btn_SingUp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_20sdp"
@@ -66,7 +66,7 @@
 
 
         <TextView
-            android:id="@+id/signIn"
+            android:id="@+id/tv_SignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"

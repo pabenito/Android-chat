@@ -21,6 +21,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void setListeners(){
-        binding.signIn.setOnClickListener(v -> onBackPressed());
+        binding.tvSignIn.setOnClickListener(v -> onBackPressed());
     }
 }

@@ -23,7 +23,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
-        binding.createAccount.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), SignUpActivity.class)));
+        binding.tvCreateAccount.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), SignUpActivity.class)));
 
     }
 

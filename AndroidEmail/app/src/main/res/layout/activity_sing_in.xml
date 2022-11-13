@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/WelcomeText"
+            android:id="@+id/tv_WelcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_40sdp"
@@ -38,7 +38,7 @@
 
 
         <EditText
-            android:id="@+id/UserID"
+            android:id="@+id/et_UserID"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_40sdp"
@@ -55,7 +55,7 @@
 
 
         <Button
-            android:id="@+id/SingInButton"
+            android:id="@+id/btn_SingIn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_20sdp"
@@ -66,7 +66,7 @@
 
 
         <TextView
-            android:id="@+id/createAccount"
+            android:id="@+id/tv_CreateAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"
