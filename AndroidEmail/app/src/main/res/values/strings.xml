@@ -16,4 +16,6 @@
     <string name="err_AlreadyAContact">%s is already one of your contacs</string>
     <string name="msg_ContactAdded">%s added to you contacts</string>
     <string name="Contacts">Contacts</string>
+    <string name="LogOut">Logout</string>
+    <string name="LogOutMessage">See you later %s</string>
 </resources>

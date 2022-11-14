@@ -17,4 +17,6 @@
     <string name="err_AlreadyAContact">%s ya es uno de tus contactos</string>
     <string name="msg_ContactAdded">%s añadido a tus contactos</string>
     <string name="Contacts">Contactos</string>
+    <string name="LogOut">Cerrar sesion</string>
+    <string name="LogOutMessage">Hasta luego %s</string>
 </resources>

@@ -22,6 +22,9 @@ public class SignInActivity extends AppCompatActivity {
     public static User getSignedUser() {
         return signedUser;
     }
+    public static void setSignedUser() {
+        signedUser=null;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         db = AppDataBase.getInstance(getApplicationContext());
         setListeners();
+
     }
 
     private void setListeners() {
@@ -46,9 +50,10 @@ public class SignInActivity extends AppCompatActivity {
             showToast(String.format(getResources().getString(R.string.err_UsernameNotFound), username));
         } else {
             signedUser = user;
+
             showToast(String.format(getResources().getString(R.string.msg_SingInSuccessfully), username));
 
-            startActivity(new Intent(this, AddContactActivity.class));
+            startActivity(new Intent(this, FeedActivity.class));
         }
 
 
