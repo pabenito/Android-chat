@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,7 +7,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:overScrollMode="never"
-    android:padding="24sp"
+
     android:scrollbars="none"
     tools:context=".Activities.AddContactActivity">
 
@@ -16,46 +17,65 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_WelcomeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:text="@string/AddContact"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/_18ssp" />
-
-        <TextView
-            android:id="@+id/LoginSubtitle"
-            android:layout_width="283dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:text="@string/AddContactHint"
-            android:textAlignment="center"
-            android:textColor="@color/secondary_text"
-            android:textSize="@dimen/_12ssp" />
-        <EditText
-            android:id="@+id/et_Username"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_45sdp"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:hint="@string/Username"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:paddingStart="@dimen/_16sdp"
-            android:paddingEnd="@dimen/_16sdp"
-            android:textColor="@color/primary_text"
-            android:textColorHint="#78909C"
-            android:textSize="@dimen/_16ssp"/>
+            android:layout_height="wrap_content"
+            app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+            app:title="@string/app_name"
+            app:titleMarginStart="24dp"
+            app:titleTextColor="@android:color/white" />
 
-        <Button
-            android:id="@+id/btn_AddContact"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:text="@string/AddContact"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_13ssp" />
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24sp">
+
+
+            <TextView
+                android:id="@+id/tv_WelcomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:text="@string/AddContact"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_18ssp" />
+
+            <TextView
+                android:id="@+id/LoginSubtitle"
+                android:layout_width="283dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="@string/AddContactHint"
+                android:textAlignment="center"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/_12ssp" />
+
+            <EditText
+                android:id="@+id/et_Username"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:hint="@string/Username"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                android:textColor="@color/primary_text"
+                android:textColorHint="#78909C"
+                android:textSize="@dimen/_16ssp" />
+
+            <Button
+                android:id="@+id/btn_AddContact"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/AddContact"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

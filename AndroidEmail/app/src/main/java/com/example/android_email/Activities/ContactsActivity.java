@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.User;
+import com.example.android_email.R;
 import com.example.android_email.ToastExceptionHandler;
 import com.example.android_email.databinding.ActivityAddContactBinding;
 import com.example.android_email.databinding.ActivityContactsBinding;
@@ -36,5 +39,26 @@ public class ContactsActivity extends AppCompatActivity {
             if (contacts.size() == 0)
                 startActivity(new Intent(this, AddContactActivity.class));
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        menu.findItem(R.id.a_contacts).setVisible(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean ok = true;
+        switch (item.getItemId()) {
+            case R.id.a_AddContacts: startActivity(new Intent(this, AddContactActivity.class)); break;
+            case R.id.a_contacts: break;
+            default:
+                ok = super.onOptionsItemSelected(item);
+                break;
+        }
+
+        return ok;
     }
 }

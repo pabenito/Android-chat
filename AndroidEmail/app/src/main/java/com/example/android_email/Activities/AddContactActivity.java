@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.android_email.DataBase.AppDataBase;
@@ -35,6 +38,28 @@ public class AddContactActivity extends AppCompatActivity {
             startActivity(new Intent(this, SignInActivity.class));
         else
             contacts = db.chatDAO().getUserChats(user.username);
+        setSupportActionBar(findViewById(R.id.toolbar));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        menu.findItem(R.id.a_AddContacts).setVisible(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean ok = true;
+        switch (item.getItemId()) {
+            case R.id.a_AddContacts: break;
+            case R.id.a_contacts: startActivity(new Intent(this, ContactsActivity.class));
+            default:
+                ok = super.onOptionsItemSelected(item);
+                break;
+        }
+
+        return ok;
     }
 
     private void setListeners(){

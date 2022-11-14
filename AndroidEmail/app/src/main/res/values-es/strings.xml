@@ -16,4 +16,5 @@
     <string name="AddContactHint">Introduce el nombre de usuario de quien quieres agregar</string>
     <string name="err_AlreadyAContact">%s ya es uno de tus contactos</string>
     <string name="msg_ContactAdded">%s añadido a tus contactos</string>
+    <string name="Contacts">Contactos</string>
 </resources>
