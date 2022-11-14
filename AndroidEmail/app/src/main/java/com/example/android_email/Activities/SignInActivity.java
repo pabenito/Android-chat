@@ -42,13 +42,20 @@ public class SignInActivity extends AppCompatActivity {
         String username = binding.etUsername.getText().toString().trim().toLowerCase();
         User user = db.userDao().get(username);
 
-        if (user == null)
-            throw new RuntimeException(String.format(getResources().getString(R.string.err_UsernameNotFound), username));
+        if (user == null) {
+            showToast(String.format(getResources().getString(R.string.err_UsernameNotFound), username));
+        } else {
+            signedUser = user;
+            Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingInSuccessfully), username), Toast.LENGTH_LONG).show();
 
-        signedUser = user;
-        Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingInSuccessfully), username), Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, AddContactActivity.class));
+        }
 
-        startActivity(new Intent(this, AddContactActivity.class));
+
+    }
+
+    private void showToast(String message){
+        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
     }
 
 }
