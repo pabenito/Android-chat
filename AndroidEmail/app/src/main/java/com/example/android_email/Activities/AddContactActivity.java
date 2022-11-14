@@ -70,17 +70,23 @@ public class AddContactActivity extends AppCompatActivity {
         String username = binding.etUsername.getText().toString().trim().toLowerCase();
         User new_contact = db.userDao().get(username);
 
-        if (new_contact == null)
-            throw new RuntimeException(String.format(getResources().getString(R.string.err_UsernameNotFound), username));
+        if (new_contact == null){
+            showToast(String.format(getResources().getString(R.string.err_UsernameNotFound), username));
 
-        if (contacts.contains(user))
-            throw new RuntimeException(String.format(getResources().getString(R.string.err_AlreadyAContact), username));
+        }else if (contacts.contains(user)){
+            showToast(String.format(getResources().getString(R.string.err_AlreadyAContact), username));
+        }else{
+            Chat new_chat = new Chat();
+            new_chat.user1 = user.username;
+            new_chat.user2 = new_contact.username;
+            db.chatDAO().insert(new_chat);
 
-        Chat new_chat = new Chat();
-        new_chat.user1 = user.username;
-        new_chat.user2 = new_contact.username;
-        db.chatDAO().insert(new_chat);
+            showToast(String.format(getResources().getString(R.string.msg_ContactAdded), username));
+        }
 
-        Toast.makeText(this, String.format(getResources().getString(R.string.msg_ContactAdded), username), Toast.LENGTH_LONG).show();
+    }
+
+    private void showToast(String message){
+        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
     }
 }

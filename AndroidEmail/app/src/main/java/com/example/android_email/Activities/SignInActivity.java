@@ -46,7 +46,7 @@ public class SignInActivity extends AppCompatActivity {
             showToast(String.format(getResources().getString(R.string.err_UsernameNotFound), username));
         } else {
             signedUser = user;
-            Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingInSuccessfully), username), Toast.LENGTH_LONG).show();
+            showToast(String.format(getResources().getString(R.string.msg_SingInSuccessfully), username));
 
             startActivity(new Intent(this, AddContactActivity.class));
         }
