@@ -48,7 +48,7 @@ public class SignInActivity extends AppCompatActivity {
         signedUser = user;
         Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingInSuccessfully), username), Toast.LENGTH_LONG).show();
 
-        startActivity(new Intent(this, AddContactActivity.class));
+        startActivity(new Intent(this, ContactsActivity.class));
     }
 
 }
