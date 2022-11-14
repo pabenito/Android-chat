@@ -11,4 +11,8 @@
     <string name="msg_SingInSuccessfully">You have singed in as %s</string>
     <string name="err_Unexpected">Unexpected error: %s</string>
     <string name="err_UsernameNotFound">%s is not a user yet</string>
+    <string name="AddContact">Add Contact</string>
+    <string name="AddContactHint">Introduce the username of the person you want to add</string>
+    <string name="err_AlreadyAContact">%s is already one of your contacs</string>
+    <string name="msg_ContactAdded">%s added to you contacts</string>
 </resources>

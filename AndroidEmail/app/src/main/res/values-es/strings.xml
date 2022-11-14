@@ -12,4 +12,8 @@
     <string name="msg_SingInSuccessfully">Has iniciado sesión como %s</string>
     <string name="err_Unexpected">Error inesperado: %s</string>
     <string name="err_UsernameNotFound">%s no es un usuario todavía</string>
+    <string name="AddContact">Añadir Contacto</string>
+    <string name="AddContactHint">Introduce el nombre de usuario de quien quieres agregar</string>
+    <string name="err_AlreadyAContact">%s ya es uno de tus contactos</string>
+    <string name="msg_ContactAdded">%s añadido a tus contactos</string>
 </resources>

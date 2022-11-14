@@ -13,8 +13,8 @@ public class Chat {
     public int id;
 
     @NonNull
-    public int user1;
+    public String user1;
 
     @NonNull
-    public int user2;
+    public String user2;
 }

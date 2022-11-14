@@ -18,4 +18,7 @@ public class Message {
 
     @NonNull
     public String receiver;
+
+    @NonNull
+    public String message;
 }

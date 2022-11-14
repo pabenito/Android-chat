@@ -8,21 +8,32 @@
     android:overScrollMode="never"
     android:padding="24sp"
     android:scrollbars="none"
-    tools:context=".Activities.SignUpActivity">
+    tools:context=".Activities.AddContactActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
         <TextView
-            android:id="@+id/tv_NewAccount"
+            android:id="@+id/tv_WelcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_40sdp"
-            android:text="@string/CreateAccount"
+            android:text="@string/AddContact"
             android:textColor="@color/primary_text"
-            android:textSize="@dimen/_18ssp"/>
+            android:textSize="@dimen/_18ssp" />
+
+        <TextView
+            android:id="@+id/LoginSubtitle"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:text="@string/AddContactHint"
+            android:textAlignment="center"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_12ssp" />
         <EditText
             android:id="@+id/et_Username"
             android:layout_width="match_parent"
@@ -37,21 +48,14 @@
             android:textColor="@color/primary_text"
             android:textColorHint="#78909C"
             android:textSize="@dimen/_16ssp"/>
+
         <Button
-            android:id="@+id/btn_SignUp"
+            android:id="@+id/btn_AddContact"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_20sdp"
-            android:text="@string/SignUp"
+            android:text="@string/AddContact"
             android:textColor="@color/white"
-            android:textSize="@dimen/_13ssp"/>
-        <TextView
-            android:id="@+id/tv_SignIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:text="@string/SignIn"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/_13ssp"/>
+            android:textSize="@dimen/_13ssp" />
     </LinearLayout>
 </ScrollView>

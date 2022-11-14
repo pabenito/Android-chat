@@ -29,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void setListeners(){
         binding.tvSignIn.setOnClickListener(v -> onBackPressed());
-        binding.btnSingUp.setOnClickListener(v -> singUp());
+        binding.btnSignUp.setOnClickListener(v -> singUp());
     }
 
     private void singUp() {

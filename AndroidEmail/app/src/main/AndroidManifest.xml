@@ -10,20 +10,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidEmail">
-
-        <activity android:name=".Activities.SignUpActivity"/>
-
-        <activity android:name=".Activities.SignInActivity"
+        <activity
+            android:name=".Activities.AddContactActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity android:name=".Activities.SignUpActivity" />
+        <activity
+            android:name=".Activities.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

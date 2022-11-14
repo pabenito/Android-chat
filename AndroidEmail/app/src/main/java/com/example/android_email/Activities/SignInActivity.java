@@ -17,9 +17,9 @@ public class SignInActivity extends AppCompatActivity {
     private ActivitySingInBinding binding;
     private AppDataBase db;
 
-    private User signedUser;
+    private static User signedUser;
 
-    public User getSignedUser() {
+    public static User getSignedUser() {
         return signedUser;
     }
 
@@ -35,7 +35,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void setListeners() {
         binding.tvCreateAccount.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), SignUpActivity.class)));
-        binding.btnSingIn.setOnClickListener(v -> signIn());
+        binding.btnSignIn.setOnClickListener(v -> signIn());
     }
 
     private void signIn() {
@@ -47,6 +47,8 @@ public class SignInActivity extends AppCompatActivity {
 
         signedUser = user;
         Toast.makeText(this, String.format(getResources().getString(R.string.msg_SingInSuccessfully), username), Toast.LENGTH_LONG).show();
+
+        startActivity(new Intent(this, AddContactActivity.class));
     }
 
 }
