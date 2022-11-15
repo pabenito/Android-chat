@@ -7,72 +7,59 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android_email.Adapters.UsersAdapter;
+import com.example.android_email.Adapters.ContactsAdapter;
 import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.User;
-import com.example.android_email.Listeners.UserListener;
 import com.example.android_email.R;
 import com.example.android_email.ToastExceptionHandler;
 import com.example.android_email.databinding.ActivityContactsBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsActivity extends AppCompatActivity implements UserListener {
+public class ContactsActivity extends AppCompatActivity {
 
     private ActivityContactsBinding binding;
     private AppDataBase db;
     private User user;
     private List<Chat> contacts;
-    private TextView tvUsername;
+    private static Chat selectedChat;
+
+    public static Chat getSelectedChat() {
+        return selectedChat;
+    }
+
+    public static void setSelectedChat(Chat chat) {
+        selectedChat = chat;
+    }
+
+    public ContactsActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Thread.setDefaultUncaughtExceptionHandler(new ToastExceptionHandler(this));
         super.onCreate(savedInstanceState);
         binding = ActivityContactsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
         db = AppDataBase.getInstance(getApplicationContext());
         user = SignInActivity.getSignedUser();
 
-        tvUsername = (TextView) findViewById(R.id.et_Username);
-        tvUsername.setText(user.username);
-/*
         if (user == null)
             startActivity(new Intent(this, SignInActivity.class));
         else {
             contacts = db.chatDAO().getUserChats(user.username);
-            if (contacts.size() == 0)
+            if (contacts == null || contacts.size() == 0)
                 startActivity(new Intent(this, AddContactActivity.class));
+            else
+                selectedChat = contacts.get(0);
         }
 
- */
+        Thread.setDefaultUncaughtExceptionHandler(new ToastExceptionHandler(this));
+        setContentView(binding.getRoot());
         setSupportActionBar(findViewById(R.id.toolbar));
-        getChats();
-    }
-
-    private void getChats() {
-        contacts = db.chatDAO().getUserChats(user.username);
-        List<com.example.android_email.Models.User> userList = new ArrayList<>();
-        for (Chat c : contacts) {
-            String nombre = (c.user1 == user.username ? c.user2 : c.user1);
-            User aux = db.userDao().get(nombre);
-            com.example.android_email.Models.User aux2 = new com.example.android_email.Models.User();
-            aux2.name = aux.username;
-            userList.add(aux2);
-        }
-
-        if (userList.size() > 0) {
-            UsersAdapter usersAdapter = new UsersAdapter(userList, this);
-            binding.usersRecycleView.setAdapter(usersAdapter);
-            binding.usersRecycleView.setVisibility(View.VISIBLE);
-        } else {
-        }
-
+        binding.rvUsers.setAdapter(new ContactsAdapter(contacts, user, this));
+        binding.rvUsers.setVisibility(View.VISIBLE);
     }
 
 
@@ -105,13 +92,5 @@ public class ContactsActivity extends AppCompatActivity implements UserListener 
 
     private void showToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-    }
-
-
-    @Override
-    public void onUserClicked(com.example.android_email.Models.User user) {
-        Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
-        startActivity(intent);
-        finish();
     }
 }

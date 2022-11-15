@@ -35,7 +35,6 @@ public class ChatActivity extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private AppDataBase db;
     private int chatID;
-    //private PreferenceManager preferenceManager;
 
     public ChatActivity() {
     }
@@ -80,7 +79,7 @@ public class ChatActivity extends AppCompatActivity {
         chatAdapter = new ChatAdapter(chatMessageList, SignInActivity.getSignedUser().username);
         binding.chatRecyclerView.setAdapter(chatAdapter);
         db = AppDataBase.getInstance(getApplicationContext());
-        chatID = db.chatDAO().getByPar(SignInActivity.getSignedUser().username, reveiverUser.name).id;
+        chatID = ContactsActivity.getSelectedChat().id;
     }
 
     private void sendMessage() {

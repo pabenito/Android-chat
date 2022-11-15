@@ -22,9 +22,6 @@ public class SignInActivity extends AppCompatActivity {
     public static User getSignedUser() {
         return signedUser;
     }
-    public static void setSignedUser() {
-        signedUser=null;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
