@@ -14,15 +14,15 @@ import com.example.android_email.Adapters.UsersAdapter;
 import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.User;
+import com.example.android_email.Listeners.UserListener;
 import com.example.android_email.R;
 import com.example.android_email.ToastExceptionHandler;
-import com.example.android_email.databinding.ActivityAddContactBinding;
 import com.example.android_email.databinding.ActivityContactsBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsActivity extends AppCompatActivity {
+public class ContactsActivity extends AppCompatActivity implements UserListener {
 
     private ActivityContactsBinding binding;
     private AppDataBase db;
@@ -39,9 +39,9 @@ public class ContactsActivity extends AppCompatActivity {
         db = AppDataBase.getInstance(getApplicationContext());
         user = SignInActivity.getSignedUser();
 
-        tvUsername = (TextView) findViewById(R.id.userName);
+        tvUsername = (TextView) findViewById(R.id.et_Username);
         tvUsername.setText(user.username);
-
+/*
         if (user == null)
             startActivity(new Intent(this, SignInActivity.class));
         else {
@@ -49,32 +49,31 @@ public class ContactsActivity extends AppCompatActivity {
             if (contacts.size() == 0)
                 startActivity(new Intent(this, AddContactActivity.class));
         }
+
+ */
         setSupportActionBar(findViewById(R.id.toolbar));
         getChats();
     }
 
     private void getChats() {
-        List<Chat> chatList = db.chatDAO().getUserChats(user.username);
+        contacts = db.chatDAO().getUserChats(user.username);
         List<com.example.android_email.Models.User> userList = new ArrayList<>();
-
-        for (Chat c : chatList) {
-            String nombre = (c.user1.equals(user)?c.user2:c.user1);
+        for (Chat c : contacts) {
+            String nombre = (c.user1 == user.username ? c.user2 : c.user1);
             User aux = db.userDao().get(nombre);
             com.example.android_email.Models.User aux2 = new com.example.android_email.Models.User();
-            aux2.name=aux.username;
+            aux2.name = aux.username;
             userList.add(aux2);
         }
 
         if (userList.size() > 0) {
-            UsersAdapter usersAdapter = new UsersAdapter(userList);
-           // binding.usersRecycleView.setAdapter(usersAdapter);
-            //binding.usersRecycleView.setVisibility(View.VISIBLE);
-        }else{
-            showToast("Esto no va pibe");
+            UsersAdapter usersAdapter = new UsersAdapter(userList, this);
+            binding.usersRecycleView.setAdapter(usersAdapter);
+            binding.usersRecycleView.setVisibility(View.VISIBLE);
+        } else {
         }
 
     }
-
 
 
     @Override
@@ -105,6 +104,14 @@ public class ContactsActivity extends AppCompatActivity {
     }
 
     private void showToast(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void onUserClicked(com.example.android_email.Models.User user) {
+        Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

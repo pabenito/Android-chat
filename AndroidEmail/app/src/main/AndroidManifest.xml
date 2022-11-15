@@ -11,30 +11,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidEmail">
         <activity
-            android:name=".ChatActivity"
-            android:exported="false">
+            android:name=".Activities.ChatActivity"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Activities.ContactsActivity"
-            android:exported="false">
+            android:windowSoftInputMode="adjustResize"
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Activities.AddContactActivity"
-            android:exported="false">
+          >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".Activities.SignUpActivity" />
+        <activity
+            android:name=".Activities.SignUpActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Activities.SignInActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

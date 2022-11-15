@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android_email.Listeners.UserListener;
 import com.example.android_email.Models.User;
 import com.example.android_email.databinding.ItemContainerUserBinding;
 
@@ -14,9 +15,13 @@ import java.util.List;
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHolder> {
 
     private final List<User> users;
+    private final UserListener userListener;
 
-    public UsersAdapter(List<User> users) {
+
+
+    public UsersAdapter(List<User> users, UserListener userListener) {
         this.users = users;
+        this.userListener=userListener;
     }
 
     @NonNull
@@ -51,6 +56,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
 
         void setUserData(User user) {
             binding.texName.setText(user.name); ;
+            binding.getRoot().setOnClickListener(v -> userListener.onUserClicked(user));
+
         }
     }
 
