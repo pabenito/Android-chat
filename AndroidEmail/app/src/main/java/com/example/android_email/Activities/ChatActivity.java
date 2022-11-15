@@ -100,6 +100,8 @@ public class ChatActivity extends AppCompatActivity {
         String signedUser = SignInActivity.getSignedUser().username;
         Chat chat = db.chatDAO().get(chatID);
         String chatName = chat.user1 != signedUser ? chat.user2 : chat.user1;
+        reveiverUser = new User();
+        reveiverUser.name = chatName;
         binding.texName.setText(chatName);
     }
 
