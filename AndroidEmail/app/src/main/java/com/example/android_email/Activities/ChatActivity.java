@@ -88,7 +88,7 @@ public class ChatActivity extends AppCompatActivity {
         message.receiver = reveiverUser.name;
         message.message = binding.inputMessage.getText().toString();
         Chat chat = db.chatDAO().getByPar(message.receiver, message.sender);
-        message.chatId = chat.id;
+        message.chatId = chatID;
         db.messageDAO().insert(message);
         binding.inputMessage.setText(null);
         binding.chatRecyclerView.setVisibility(View.GONE);

@@ -62,7 +62,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
         void setData(Chat chat) {
             String contact = chat.user1 != user.username ? chat.user2 : chat.user1;
 
-            binding.texMessage.setText(contact); ;
+            binding.tvUser.setText(contact); ;
             binding.getRoot().setOnClickListener(v -> {
                 ContactsActivity.setSelectedChat(chat);
                 avtivity.startActivity(new Intent(avtivity, ChatActivity.class));
