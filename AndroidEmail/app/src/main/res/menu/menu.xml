@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/a_contacts"
         android:title="@string/Contacts" />
     <item
         android:id="@+id/a_AddContacts"
         android:title="@string/AddContact" />
+    <item
+        android:id="@+id/a_LogOut"
+        android:title="@string/LogOut" />
 </menu>

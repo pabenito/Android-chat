@@ -14,10 +14,10 @@ import com.example.android_email.databinding.ActivityFeedBinding;
 
 public class FeedActivity extends AppCompatActivity {
 
-    private User singedUser = new SignInActivity().getSignedUser();
+    private User user;
     private ActivityFeedBinding binding;
     private AppDataBase db;
-    private TextView username;
+    private TextView tvUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +25,9 @@ public class FeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_feed);
         binding = ActivityFeedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        username = (TextView) findViewById(R.id.userName);
-        username.setText(singedUser.username);
+        user =  SignInActivity.getSignedUser();
+        tvUsername = (TextView) findViewById(R.id.userName);
+        tvUsername.setText(user.username);
         setListeners();
     }
 
@@ -35,7 +36,7 @@ public class FeedActivity extends AppCompatActivity {
     }
 
     private void singOut() {
-        showToast(String.format(getResources().getString(R.string.LogOutMessage), username));
+        showToast(String.format(getResources().getString(R.string.LogOutMessage), tvUsername.getText().toString()));
         startActivity(new Intent(this, SignInActivity.class));
     }
 

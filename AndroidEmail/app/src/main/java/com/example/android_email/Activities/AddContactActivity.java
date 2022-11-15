@@ -29,7 +29,7 @@ public class AddContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Thread.setDefaultUncaughtExceptionHandler(new ToastExceptionHandler(this));
         super.onCreate(savedInstanceState);
-        binding =  ActivityAddContactBinding.inflate(getLayoutInflater());
+        binding = ActivityAddContactBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         db = AppDataBase.getInstance(getApplicationContext());
         setListeners();
@@ -53,7 +53,8 @@ public class AddContactActivity extends AppCompatActivity {
         boolean ok = true;
         switch (item.getItemId()) {
             case R.id.a_AddContacts: break;
-            case R.id.a_contacts: startActivity(new Intent(this, ContactsActivity.class));
+            case R.id.a_contacts: startActivity(new Intent(this, ContactsActivity.class)); break;
+            case R.id.a_LogOut: showToast(String.format(getResources().getString(R.string.LogOutMessage), user.username)); startActivity(new Intent(this, SignInActivity.class)); break;
             default:
                 ok = super.onOptionsItemSelected(item);
                 break;

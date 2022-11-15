@@ -53,7 +53,7 @@ public class SignInActivity extends AppCompatActivity {
 
             showToast(String.format(getResources().getString(R.string.msg_SingInSuccessfully), username));
 
-            startActivity(new Intent(this, FeedActivity.class));
+            startActivity(new Intent(this, ContactsActivity.class));
         }
 
 
