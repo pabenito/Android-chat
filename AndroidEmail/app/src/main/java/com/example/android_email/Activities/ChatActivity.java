@@ -81,6 +81,7 @@ public class ChatActivity extends AppCompatActivity {
         binding.chatRecyclerView.setAdapter(chatAdapter);
         db = AppDataBase.getInstance(getApplicationContext());
         chatID = ContactsActivity.getSelectedChat().id;
+        update();
     }
 
     private void sendMessage() {
