@@ -43,6 +43,7 @@ public class ChatActivity extends AppCompatActivity {
     private void update(){
         List <Message> messages = db.messageDAO().getChatMessages(chatID);
         int count = chatMessageList.size();
+        chatMessageList.clear();
         for(Message m : messages){
             ChatMessage chatMessage = new ChatMessage();
             chatMessage.sender = m.sender;
