@@ -69,8 +69,8 @@ public class ChatActivity extends AppCompatActivity {
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setListeners();
-        loadReceiverDetails();
         init();
+        loadReceiverDetails();
     }
 
 
@@ -97,9 +97,10 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void loadReceiverDetails() {
-        reveiverUser = new User();
-        reveiverUser.name = SignInActivity.getSignedUser().username;
-        binding.texName.setText(reveiverUser.name);
+        String signedUser = SignInActivity.getSignedUser().username;
+        Chat chat = db.chatDAO().get(chatID);
+        String chatName = chat.user1 != signedUser ? chat.user2 : chat.user1;
+        binding.texName.setText(chatName);
     }
 
     private void setListeners() {
