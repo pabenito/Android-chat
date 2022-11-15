@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidEmail">
         <activity
-            android:name=".Activities.FeedActivity"
+            android:name=".ChatActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

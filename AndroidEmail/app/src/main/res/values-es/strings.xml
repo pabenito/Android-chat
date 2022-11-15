@@ -19,4 +19,5 @@
     <string name="Contacts">Contactos</string>
     <string name="LogOut">Cerrar sesion</string>
     <string name="LogOutMessage">Hasta luego %s</string>
+    <string name="MessageHint">Escribe un mensaje</string>
 </resources>

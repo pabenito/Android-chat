@@ -18,4 +18,5 @@
     <string name="Contacts">Contacts</string>
     <string name="LogOut">Logout</string>
     <string name="LogOutMessage">See you later %s</string>
+    <string name="MessageHint">Type a message</string>
 </resources>
