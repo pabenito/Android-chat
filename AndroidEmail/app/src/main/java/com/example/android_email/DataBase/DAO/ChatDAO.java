@@ -19,4 +19,7 @@ public interface ChatDAO {
 
     @Insert
     public void insert(Chat chat);
+
+    @Query("SELECT * FROM Chat WHERE (user1 LIKE :user1 AND user2 LIKE :user2) OR (user1 LIKE :user2 AND user2 LIKE :user1) ")
+    public Chat getByPar(String user1, String user2);
 }
