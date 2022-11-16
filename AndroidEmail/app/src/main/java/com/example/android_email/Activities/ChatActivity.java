@@ -29,9 +29,6 @@ public class ChatActivity extends AppCompatActivity {
     private AppDataBase db;
     private Chat chat;
 
-    public ChatActivity() {
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -34,9 +34,6 @@ public class ContactsActivity extends AppCompatActivity {
         selectedChat = chat;
     }
 
-    public ContactsActivity() {
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
