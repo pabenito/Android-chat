@@ -1,16 +1,20 @@
 package com.example.android_email.Activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.android_email.Adapters.ChatAdapter;
 import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.Message;
 import com.example.android_email.DataBase.Entity.User;
+import com.example.android_email.R;
 import com.example.android_email.databinding.ActivityChatBinding;
 
 import java.util.List;
@@ -57,6 +61,28 @@ public class ChatActivity extends AppCompatActivity {
     private void setListeners() {
         binding.imageBack.setOnClickListener(v -> startActivity(new Intent(this, ContactsActivity.class)));
         binding.layoutSend.setOnClickListener(v -> sendMessage());
+        binding.imageInfo.setOnClickListener(v -> info());
+    }
+
+    private void info() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle(R.string.InfoTitle);
+        builder.setIcon(R.drawable.ic_info);
+        builder.setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        View dialogView = getLayoutInflater().inflate(android.R.layout.simple_list_item_2, null);
+        TextView tvRight = dialogView.findViewById(android.R.id.text1);
+        TextView tvLeft = dialogView.findViewById(android.R.id.text2);
+        tvRight.setText(String.format(getResources().getString(R.string.RightUser), user.username));
+        tvLeft.setText(String.format(getResources().getString(R.string.LeftUser), contact.username));
+        builder.setView(dialogView);
+        builder.show();
     }
 
     private void sendMessage() {

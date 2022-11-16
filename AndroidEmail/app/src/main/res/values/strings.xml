@@ -19,4 +19,11 @@
     <string name="LogOut">Logout</string>
     <string name="LogOutMessage">See you later %s</string>
     <string name="MessageHint">Type a message</string>
+    <string name="InfoTitle">Chat Info</string>
+    <string name="InfoMessage">%s</string>
+    <string name="Ok">Ok</string>
+    <string name="User">User</string>
+    <string name="Contact">Contact</string>
+    <string name="RightUser">The right user is: %s</string>
+    <string name="LeftUser">The left user is: %s</string>
 </resources>
