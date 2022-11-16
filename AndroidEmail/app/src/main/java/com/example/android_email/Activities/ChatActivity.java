@@ -17,8 +17,7 @@ import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.DAO.MessageDAO;
 import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.Message;
-import com.example.android_email.Models.ChatMessage;
-import com.example.android_email.Models.User;
+import com.example.android_email.DataBase.Entity.User;
 import com.example.android_email.R;
 import com.example.android_email.databinding.ActivityChatBinding;
 
@@ -31,7 +30,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private ActivityChatBinding binding;
     private User reveiverUser;
-    private List<ChatMessage> chatMessageList;
+    private List<Message> chatMessageList;
     private ChatAdapter chatAdapter;
     private AppDataBase db;
     private int chatID;
@@ -45,7 +44,7 @@ public class ChatActivity extends AppCompatActivity {
         int count = chatMessageList.size();
         chatMessageList.clear();
         for(Message m : messages){
-            ChatMessage chatMessage = new ChatMessage();
+            Message chatMessage = new Message();
             chatMessage.sender = m.sender;
             chatMessage.message = m.message;
             chatMessage.receiver = m.receiver;
@@ -87,7 +86,7 @@ public class ChatActivity extends AppCompatActivity {
     private void sendMessage() {
         Message message = new Message();
         message.sender = SignInActivity.getSignedUser().username;
-        message.receiver = reveiverUser.name;
+        message.receiver = reveiverUser.username;
         message.message = binding.inputMessage.getText().toString();
         Chat chat = db.chatDAO().getByPar(message.receiver, message.sender);
         message.chatId = chatID;
@@ -102,7 +101,7 @@ public class ChatActivity extends AppCompatActivity {
         Chat chat = db.chatDAO().get(chatID);
         String chatName = chat.user1 != signedUser ? chat.user2 : chat.user1;
         reveiverUser = new User();
-        reveiverUser.name = chatName;
+        reveiverUser.username = chatName;
         binding.texName.setText(chatName);
     }
 
