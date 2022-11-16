@@ -28,30 +28,6 @@ public class ChatActivity extends AppCompatActivity {
     public ChatActivity() {
     }
 
-
-
-    private void update(){
-        List <Message> messages = db.messageDAO().getChatMessages(chat.id);
-        int count = this.messages.size();
-        this.messages.clear();
-        for(Message m : messages){
-            Message chatMessage = new Message();
-            chatMessage.sender = m.sender;
-            chatMessage.message = m.message;
-            chatMessage.receiver = m.receiver;
-            this.messages.add(chatMessage);
-        }
-
-        if(count==0){
-            chatAdapter.notifyDataSetChanged();
-        }else{
-            chatAdapter.notifyItemRangeInserted(this.messages.size(), this.messages.size());
-            binding.chatRecyclerView.smoothScrollToPosition(this.messages.size()-1);
-
-        }
-        binding.chatRecyclerView.setVisibility(View.VISIBLE);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,28 +48,31 @@ public class ChatActivity extends AppCompatActivity {
         initAdapter();
     }
 
-
     private void initAdapter() {
         chatAdapter = new ChatAdapter(messages, user.username);
         binding.chatRecyclerView.setAdapter(chatAdapter);
         binding.chatRecyclerView.setVisibility(View.VISIBLE);
     }
 
-    private void sendMessage() {
-        Message message = new Message();
-        message.sender = SignInActivity.getSignedUser().username;
-        message.receiver = contact.username;
-        message.message = binding.inputMessage.getText().toString();
-        message.chatId = chat.id;
-        db.messageDAO().insert(message);
-        binding.inputMessage.setText(null);
-        binding.chatRecyclerView.setVisibility(View.GONE);
-        update();
-    }
-
     private void setListeners() {
         binding.imageBack.setOnClickListener(v -> startActivity(new Intent(this, ContactsActivity.class)));
         binding.layoutSend.setOnClickListener(v -> sendMessage());
+    }
+
+    private void sendMessage() {
+        Message message = new Message();
+        message.sender = user.username;
+        message.receiver = contact.username;
+        message.message = binding.inputMessage.getText().toString().trim();
+        message.chatId = chat.id;
+
+        long messageId = db.messageDAO().insert(message);
+        messages.add(db.messageDAO().get(messageId));
+
+        binding.inputMessage.getText().clear();
+
+        chatAdapter.notifyItemInserted(messages.size()-1);
+        binding.chatRecyclerView.smoothScrollToPosition(this.messages.size()-1);
     }
 
     private User getTheOtherUserFromChat(Chat chat, User user) {

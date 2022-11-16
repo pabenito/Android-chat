@@ -15,7 +15,7 @@ public interface ChatDAO {
     public List<Chat> getUserChats(String username);
 
     @Query("SELECT * FROM Chat WHERE id = :chatId")
-    public Chat get(int chatId);
+    public Chat get(long chatId);
 
     @Insert
     public void insert(Chat chat);

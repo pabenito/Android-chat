@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey;
 public class Chat {
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    public int id;
+    public long id;
 
     @NonNull
     public String user1;
