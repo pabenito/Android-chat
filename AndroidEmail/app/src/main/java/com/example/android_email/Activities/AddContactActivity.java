@@ -1,6 +1,7 @@
 package com.example.android_email.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +35,10 @@ public class AddContactActivity extends AppCompatActivity {
         user = SignInActivity.getSignedUser();
         if (user == null)
             startActivity(new Intent(this, SignInActivity.class));
-        setSupportActionBar(findViewById(R.id.toolbar));
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.primary));
+        setSupportActionBar(toolbar);
     }
 
     @Override
