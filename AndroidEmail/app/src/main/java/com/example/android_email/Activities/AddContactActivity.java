@@ -21,7 +21,6 @@ public class AddContactActivity extends AppCompatActivity {
     private ActivityAddContactBinding binding;
     private AppDataBase db;
     private User user;
-    private List<Chat> contacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +32,6 @@ public class AddContactActivity extends AppCompatActivity {
         user = SignInActivity.getSignedUser();
         if (user == null)
             startActivity(new Intent(this, SignInActivity.class));
-        else
-            contacts = db.chatDAO().getUserChats(user.username);
         setSupportActionBar(findViewById(R.id.toolbar));
     }
 
@@ -71,7 +68,7 @@ public class AddContactActivity extends AppCompatActivity {
         if (new_contact == null){
             showToast(String.format(getResources().getString(R.string.err_UsernameNotFound), username));
 
-        }else if (contacts.contains(user)){
+        }else if (db.chatDAO().getByUsers(user.username, new_contact.username) != null){
             showToast(String.format(getResources().getString(R.string.err_AlreadyAContact), username));
         }else{
             Chat new_chat = new Chat();
