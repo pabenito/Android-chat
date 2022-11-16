@@ -51,6 +51,7 @@ public class ContactsActivity extends AppCompatActivity {
 
         setContentView(binding.getRoot());
         setSupportActionBar(findViewById(R.id.toolbar));
+
         binding.rvUsers.setAdapter(new ContactsAdapter(contacts, user, this));
         binding.rvUsers.setVisibility(View.VISIBLE);
     }

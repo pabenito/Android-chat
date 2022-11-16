@@ -99,7 +99,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private User getTheOtherUserFromChat(Chat chat, User user) {
-        String theOtherUserUsername = chat.user1 == user.username ? chat.user1 : chat.user2;
+        String theOtherUserUsername = user.username.equals(chat.user1) ? chat.user2 : chat.user1;
         return db.userDao().get(theOtherUserUsername);
     }
 }
