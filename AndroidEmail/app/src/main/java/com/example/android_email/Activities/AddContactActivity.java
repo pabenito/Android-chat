@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.example.android_email.DataBase.AppDataBase;
@@ -79,9 +81,14 @@ public class AddContactActivity extends AppCompatActivity {
             showToast(String.format(getResources().getString(R.string.msg_ContactAdded), username));
         }
 
+        hideSoftKeyboard(binding.etUsername);
     }
 
     private void showToast(String message){
         Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void hideSoftKeyboard(View view) {
+        ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
