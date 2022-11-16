@@ -3,6 +3,7 @@ package com.example.android_email.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,7 +19,7 @@ import com.example.android_email.R;
 import com.example.android_email.databinding.ActivityAddContactBinding;
 
 import java.util.List;
-
+//Activity where users can add new users to chat with.
 public class AddContactActivity extends AppCompatActivity {
 
     private ActivityAddContactBinding binding;
@@ -33,6 +34,7 @@ public class AddContactActivity extends AppCompatActivity {
         db = AppDataBase.getInstance(getApplicationContext());
         setListeners();
         user = SignInActivity.getSignedUser();
+        //If by any chance the user can get on this view without sign up. The app would redirect to the sign up activity
         if (user == null)
             startActivity(new Intent(this, SignInActivity.class));
 
@@ -48,6 +50,8 @@ public class AddContactActivity extends AppCompatActivity {
         return true;
     }
 
+    //Options on tool bar
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         boolean ok = true;
@@ -67,6 +71,7 @@ public class AddContactActivity extends AppCompatActivity {
         binding.btnAddContact.setOnClickListener(v -> addContact());
     }
 
+    //We create the chat between both users at the time when one of them add the other
     private void addContact() {
         String username = binding.etUsername.getText().toString().trim().toLowerCase();
         User new_contact = db.userDao().get(username);

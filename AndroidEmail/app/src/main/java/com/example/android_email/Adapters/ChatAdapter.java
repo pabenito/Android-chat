@@ -12,6 +12,7 @@ import com.example.android_email.databinding.ItemContainerSentMessageBinding;
 
 import java.util.List;
 
+//Class to adapt the chat messages on the front-end in the chat activity
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Message> chatMessages;

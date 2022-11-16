@@ -13,6 +13,7 @@ import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.Message;
 import com.example.android_email.DataBase.Entity.User;
 
+//Room database
 @Database(entities = {User.class, Chat.class, Message.class}, version = 1, exportSchema = false)
 public abstract class AppDataBase extends RoomDatabase {
 

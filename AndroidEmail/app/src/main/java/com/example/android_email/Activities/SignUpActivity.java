@@ -11,6 +11,7 @@ import com.example.android_email.DataBase.Entity.User;
 import com.example.android_email.R;
 import com.example.android_email.databinding.ActivitySingUpBinding;
 
+//Activity where users can signup on the application
 public class SignUpActivity extends AppCompatActivity {
 
     private ActivitySingUpBinding binding;

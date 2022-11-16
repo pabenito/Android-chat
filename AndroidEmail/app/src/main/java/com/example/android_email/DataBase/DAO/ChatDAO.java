@@ -8,7 +8,7 @@ import com.example.android_email.DataBase.Entity.Chat;
 
 
 import java.util.List;
-
+// Data access object for chats
 @Dao
 public interface ChatDAO {
     @Query("SELECT * FROM Chat WHERE user1 LIKE :username OR user2 LIKE :username")

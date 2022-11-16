@@ -17,6 +17,7 @@ import com.example.android_email.databinding.ItemContainerUserBinding;
 
 import java.util.List;
 
+//Class to adapt the contacts on the front-end in the contacts activity
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactsViewHolder> {
 
     private Activity activity;

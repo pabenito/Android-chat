@@ -11,6 +11,7 @@ import com.example.android_email.DataBase.Entity.User;
 import com.example.android_email.R;
 import com.example.android_email.databinding.ActivitySingInBinding;
 
+//Activity where users can login on the application
 public class SignInActivity extends AppCompatActivity {
 
     private ActivitySingInBinding binding;

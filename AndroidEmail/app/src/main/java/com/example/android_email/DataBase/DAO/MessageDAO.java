@@ -10,7 +10,7 @@ import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.Message;
 
 import java.util.List;
-
+// Data access object for messages
 @Dao
 public interface MessageDAO {
     @Query("SELECT * FROM Message WHERE chatId =  :chatId")

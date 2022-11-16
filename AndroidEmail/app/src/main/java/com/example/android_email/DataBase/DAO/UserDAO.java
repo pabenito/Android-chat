@@ -9,7 +9,7 @@ import androidx.room.Update;
 import com.example.android_email.DataBase.Entity.User;
 
 import java.util.List;
-
+// Data access object for users
 @Dao
 public interface UserDAO {
     @Query("SELECT * FROM User WHERE username LIKE :username LIMIT 1")

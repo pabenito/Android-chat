@@ -19,6 +19,7 @@ import com.example.android_email.databinding.ActivityChatBinding;
 
 import java.util.List;
 
+//Activity where users can Chat
 public class ChatActivity extends AppCompatActivity {
 
     private ActivityChatBinding binding;
@@ -48,7 +49,7 @@ public class ChatActivity extends AppCompatActivity {
         setListeners();
         initAdapter();
     }
-
+    //  We initialized the adapters for the chat
     private void initAdapter() {
         chatAdapter = new ChatAdapter(messages, user.username);
         binding.chatRecyclerView.setAdapter(chatAdapter);
@@ -82,6 +83,7 @@ public class ChatActivity extends AppCompatActivity {
         builder.show();
     }
 
+    //Function to add new messages
     private void sendMessage() {
         Message message = new Message();
         message.sender = user.username;

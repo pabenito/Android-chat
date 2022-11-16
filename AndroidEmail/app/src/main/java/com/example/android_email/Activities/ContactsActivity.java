@@ -2,6 +2,7 @@ package com.example.android_email.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +19,7 @@ import com.example.android_email.databinding.ActivityContactsBinding;
 
 import java.util.List;
 
+//Activity where users can see their contacts
 public class ContactsActivity extends AppCompatActivity {
 
     private ActivityContactsBinding binding;
@@ -64,6 +66,7 @@ public class ContactsActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         boolean ok = true;
