@@ -1,19 +1,20 @@
 package com.example.android_email.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.User;
 import com.example.android_email.R;
-import com.example.android_email.ToastExceptionHandler;
 import com.example.android_email.databinding.ActivityAddContactBinding;
 
 import java.util.List;
@@ -23,11 +24,9 @@ public class AddContactActivity extends AppCompatActivity {
     private ActivityAddContactBinding binding;
     private AppDataBase db;
     private User user;
-    private List<Chat> contacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Thread.setDefaultUncaughtExceptionHandler(new ToastExceptionHandler(this));
         super.onCreate(savedInstanceState);
         binding = ActivityAddContactBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -36,9 +35,10 @@ public class AddContactActivity extends AppCompatActivity {
         user = SignInActivity.getSignedUser();
         if (user == null)
             startActivity(new Intent(this, SignInActivity.class));
-        else
-            contacts = db.chatDAO().getUserChats(user.username);
-        setSupportActionBar(findViewById(R.id.toolbar));
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.primary));
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class AddContactActivity extends AppCompatActivity {
         if (new_contact == null){
             showToast(String.format(getResources().getString(R.string.err_UsernameNotFound), username));
 
-        }else if (contacts.contains(user)){
+        }else if (db.chatDAO().getByUsers(user.username, new_contact.username) != null){
             showToast(String.format(getResources().getString(R.string.err_AlreadyAContact), username));
         }else{
             Chat new_chat = new Chat();
@@ -85,9 +85,14 @@ public class AddContactActivity extends AppCompatActivity {
             showToast(String.format(getResources().getString(R.string.msg_ContactAdded), username));
         }
 
+        hideSoftKeyboard(binding.etUsername);
     }
 
     private void showToast(String message){
         Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void hideSoftKeyboard(View view) {
+        ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

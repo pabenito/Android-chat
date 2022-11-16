@@ -10,11 +10,20 @@ import androidx.room.PrimaryKey;
 public class Chat {
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    public int id;
+    public long id;
 
     @NonNull
     public String user1;
 
     @NonNull
     public String user2;
+
+    @Override
+    public String toString() {
+        return "Chat{" +
+                "id=" + id +
+                ", user1='" + user1 + '\'' +
+                ", user2='" + user2 + '\'' +
+                '}';
+    }
 }

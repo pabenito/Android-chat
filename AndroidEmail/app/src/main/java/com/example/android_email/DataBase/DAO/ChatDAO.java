@@ -15,11 +15,11 @@ public interface ChatDAO {
     public List<Chat> getUserChats(String username);
 
     @Query("SELECT * FROM Chat WHERE id = :chatId")
-    public Chat get(int chatId);
+    public Chat get(long chatId);
 
     @Insert
     public void insert(Chat chat);
 
-    @Query("SELECT * FROM Chat WHERE (user1 LIKE :user1 AND user2 LIKE :user2) OR (user1 LIKE :user2 AND user2 LIKE :user1) ")
-    public Chat getByPar(String user1, String user2);
+    @Query("SELECT * FROM Chat WHERE (user1 LIKE :user1 AND user2 LIKE :user2) OR (user1 LIKE :user2 AND user2 LIKE :user1)")
+    public Chat getByUsers(String user1, String user2);
 }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:overScrollMode="never"
-
+    android:background="@android:color/white"
     tools:context=".Activities.ContactsActivity">
 
     <LinearLayout
@@ -21,7 +21,8 @@
             app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
             app:title="@string/app_name"
             app:titleMarginStart="24dp"
-            app:titleTextColor="@android:color/white" />
+            app:titleTextColor="@android:color/white"
+            android:background="@color/primary"/>
 
 
         <androidx.recyclerview.widget.RecyclerView

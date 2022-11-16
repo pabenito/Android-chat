@@ -6,23 +6,22 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.android_email.Models.ChatMessage;
+import com.example.android_email.DataBase.Entity.Message;
 import com.example.android_email.databinding.ItemContainerReceivedMessageBinding;
 import com.example.android_email.databinding.ItemContainerSentMessageBinding;
-import com.example.android_email.databinding.ItemContainerUserBinding;
 
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<ChatMessage> chatMessages;
+    private List<Message> chatMessages;
     private final String sender;
 
     public static final int VIEW_TYPE_SENT = 1;
     public static final int VIEW_TYPE_RECEIVED = 2;
 
 
-    public ChatAdapter(List<ChatMessage> chatMessages, String sender) {
+    public ChatAdapter(List<Message> chatMessages, String sender) {
         this.chatMessages = chatMessages;
         this.sender = sender;
     }
@@ -70,7 +69,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             binding = itemContainerSentMessageBinding;
         }
 
-        void setData(ChatMessage chatMessage) {
+        void setData(Message chatMessage) {
             binding.texMessage.setText(chatMessage.message);
         }
 
@@ -84,7 +83,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             binding = itemContainerReceivedMessageBinding;
         }
 
-        void setData(ChatMessage chatMessage) {
+        void setData(Message chatMessage) {
             binding.texMessage.setText(chatMessage.message);
         }
 

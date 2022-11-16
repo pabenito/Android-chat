@@ -14,7 +14,6 @@ import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.User;
 import com.example.android_email.R;
-import com.example.android_email.ToastExceptionHandler;
 import com.example.android_email.databinding.ActivityContactsBinding;
 
 import java.util.List;
@@ -35,9 +34,6 @@ public class ContactsActivity extends AppCompatActivity {
         selectedChat = chat;
     }
 
-    public ContactsActivity() {
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,13 +47,11 @@ public class ContactsActivity extends AppCompatActivity {
             contacts = db.chatDAO().getUserChats(user.username);
             if (contacts == null || contacts.size() == 0)
                 startActivity(new Intent(this, AddContactActivity.class));
-            else
-                selectedChat = contacts.get(0);
         }
 
-        Thread.setDefaultUncaughtExceptionHandler(new ToastExceptionHandler(this));
         setContentView(binding.getRoot());
         setSupportActionBar(findViewById(R.id.toolbar));
+
         binding.rvUsers.setAdapter(new ContactsAdapter(contacts, user, this));
         binding.rvUsers.setVisibility(View.VISIBLE);
     }

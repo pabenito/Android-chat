@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="false"
-    android:background="@color/primary"
+    android:background="@android:color/white"
     tools:context=".Activities.ChatActivity">
 
     <View
@@ -109,7 +109,7 @@
             android:layout_marginLeft="@dimen/_4sdp"
             android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_send"
-            android:tint="@color/white"
+            android:tint="@color/primary"
 
             />
 

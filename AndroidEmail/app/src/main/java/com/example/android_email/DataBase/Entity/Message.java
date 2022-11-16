@@ -8,10 +8,10 @@ import androidx.room.PrimaryKey;
 public class Message {
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    public int id;
+    public long id;
 
     @NonNull
-    public int chatId;
+    public long chatId;
 
     @NonNull
     public String sender;

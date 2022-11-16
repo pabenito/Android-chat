@@ -20,4 +20,11 @@
     <string name="LogOut">Cerrar sesion</string>
     <string name="LogOutMessage">Hasta luego %s</string>
     <string name="MessageHint">Escribe un mensaje</string>
+    <string name="InfoTitle">Información del chat</string>
+    <string name="InfoMessage">%s</string>
+    <string name="Ok">Cerrar</string>
+    <string name="User">Usuario</string>
+    <string name="Contact">Contacto</string>
+    <string name="RightUser">El usuario de la derecha es: %s</string>
+    <string name="LeftUser">El usuario de la izquierda es: %s</string>
 </resources>

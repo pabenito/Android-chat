@@ -1,114 +1,105 @@
 package com.example.android_email.Activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Query;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
-import androidx.room.RoomSQLiteQuery;
 
-import android.app.appsearch.observer.DocumentChangeInfo;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.android_email.Adapters.ChatAdapter;
 import com.example.android_email.DataBase.AppDataBase;
-import com.example.android_email.DataBase.DAO.MessageDAO;
 import com.example.android_email.DataBase.Entity.Chat;
 import com.example.android_email.DataBase.Entity.Message;
-import com.example.android_email.Models.ChatMessage;
-import com.example.android_email.Models.User;
+import com.example.android_email.DataBase.Entity.User;
 import com.example.android_email.R;
 import com.example.android_email.databinding.ActivityChatBinding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EventListener;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
 
     private ActivityChatBinding binding;
-    private User reveiverUser;
-    private List<ChatMessage> chatMessageList;
+    private User user;
+    private User contact;
+    private List<Message> messages;
     private ChatAdapter chatAdapter;
     private AppDataBase db;
-    private int chatID;
-
-    public ChatActivity() {
-    }
-
-
-    private void update(){
-        List <Message> messages = db.messageDAO().getChatMessages(chatID);
-        int count = chatMessageList.size();
-        chatMessageList.clear();
-        for(Message m : messages){
-            ChatMessage chatMessage = new ChatMessage();
-            chatMessage.sender = m.sender;
-            chatMessage.message = m.message;
-            chatMessage.receiver = m.receiver;
-            chatMessageList.add(chatMessage);
-        }
-
-        if(count==0){
-            chatAdapter.notifyDataSetChanged();
-        }else{
-            chatAdapter.notifyItemRangeInserted(chatMessageList.size(),chatMessageList.size());
-            binding.chatRecyclerView.smoothScrollToPosition(chatMessageList.size()-1);
-
-        }
-        binding.chatRecyclerView.setVisibility(View.VISIBLE);
-
-    }
+    private Chat chat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setListeners();
-        init();
-        loadReceiverDetails();
-    }
 
-
-    private void init() {
-        // preferenceManager = new PreferenceManager(getApplicationContext());
-        chatMessageList = new ArrayList<>();
-        chatAdapter = new ChatAdapter(chatMessageList, SignInActivity.getSignedUser().username);
-        binding.chatRecyclerView.setAdapter(chatAdapter);
         db = AppDataBase.getInstance(getApplicationContext());
-        chatID = ContactsActivity.getSelectedChat().id;
-        update();
+        user = SignInActivity.getSignedUser();
+        chat = ContactsActivity.getSelectedChat();
+        if (chat == null)
+            startActivity(new Intent(this, ContactsActivity.class));
+        contact = getTheOtherUserFromChat(chat, user);
+        messages = db.messageDAO().getChatMessages(chat.id);
+
+        binding.texName.setText(contact.username);
+
+        setListeners();
+        initAdapter();
     }
 
-    private void sendMessage() {
-        Message message = new Message();
-        message.sender = SignInActivity.getSignedUser().username;
-        message.receiver = reveiverUser.name;
-        message.message = binding.inputMessage.getText().toString();
-        Chat chat = db.chatDAO().getByPar(message.receiver, message.sender);
-        message.chatId = chatID;
-        db.messageDAO().insert(message);
-        binding.inputMessage.setText(null);
-        binding.chatRecyclerView.setVisibility(View.GONE);
-        update();
-    }
-
-    private void loadReceiverDetails() {
-        String signedUser = SignInActivity.getSignedUser().username;
-        Chat chat = db.chatDAO().get(chatID);
-        String chatName = chat.user1 != signedUser ? chat.user2 : chat.user1;
-        reveiverUser = new User();
-        reveiverUser.name = chatName;
-        binding.texName.setText(chatName);
+    private void initAdapter() {
+        chatAdapter = new ChatAdapter(messages, user.username);
+        binding.chatRecyclerView.setAdapter(chatAdapter);
+        binding.chatRecyclerView.setVisibility(View.VISIBLE);
     }
 
     private void setListeners() {
         binding.imageBack.setOnClickListener(v -> startActivity(new Intent(this, ContactsActivity.class)));
         binding.layoutSend.setOnClickListener(v -> sendMessage());
+        binding.imageInfo.setOnClickListener(v -> info());
     }
 
+    private void info() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle(R.string.InfoTitle);
+        builder.setIcon(R.drawable.ic_info);
+        builder.setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        View dialogView = getLayoutInflater().inflate(android.R.layout.simple_list_item_2, null);
+        TextView tvRight = dialogView.findViewById(android.R.id.text1);
+        TextView tvLeft = dialogView.findViewById(android.R.id.text2);
+        tvRight.setText(String.format(getResources().getString(R.string.RightUser), user.username));
+        tvLeft.setText(String.format(getResources().getString(R.string.LeftUser), contact.username));
+        builder.setView(dialogView);
+        builder.show();
+    }
+
+    private void sendMessage() {
+        Message message = new Message();
+        message.sender = user.username;
+        message.receiver = contact.username;
+        message.message = binding.inputMessage.getText().toString().trim();
+        message.chatId = chat.id;
+
+        long messageId = db.messageDAO().insert(message);
+        messages.add(db.messageDAO().get(messageId));
+
+        binding.inputMessage.getText().clear();
+
+        chatAdapter.notifyItemInserted(messages.size()-1);
+        binding.chatRecyclerView.smoothScrollToPosition(this.messages.size()-1);
+    }
+
+    private User getTheOtherUserFromChat(Chat chat, User user) {
+        String theOtherUserUsername = user.username.equals(chat.user1) ? chat.user2 : chat.user1;
+        return db.userDao().get(theOtherUserUsername);
+    }
 }

@@ -9,7 +9,6 @@ import android.widget.Toast;
 import com.example.android_email.DataBase.AppDataBase;
 import com.example.android_email.DataBase.Entity.User;
 import com.example.android_email.R;
-import com.example.android_email.ToastExceptionHandler;
 import com.example.android_email.databinding.ActivitySingInBinding;
 
 public class SignInActivity extends AppCompatActivity {
@@ -25,13 +24,11 @@ public class SignInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Thread.setDefaultUncaughtExceptionHandler(new ToastExceptionHandler(this));
         super.onCreate(savedInstanceState);
         binding = ActivitySingInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         db = AppDataBase.getInstance(getApplicationContext());
         setListeners();
-
     }
 
     private void setListeners() {
